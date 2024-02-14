@@ -2,6 +2,7 @@
     "name": "project-name",
     "version-string": "1.0",
     "dependencies": [
-        "fmt"
+        "fmt",
+        "gtest"
     ]
 }
