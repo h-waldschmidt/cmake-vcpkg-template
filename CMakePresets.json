@@ -9,7 +9,7 @@
         {
             "name": "Base",
             "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
-            "binaryDir": "${sourceDir}/build/${hostSystemName}/${presetName}",
+            "binaryDir": "${sourceDir}/build",
             "generator": "Ninja"
         },
         {
