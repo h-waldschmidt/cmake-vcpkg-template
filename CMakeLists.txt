@@ -34,7 +34,6 @@ if(BUILD_TESTING)
     enable_testing()
     include(GoogleTest)
     find_package(GTest CONFIG REQUIRED)
-    add_test(NAME test COMMAND ${PROJECT_NAME}_test)
 endif()
 
 add_subdirectory(src)
