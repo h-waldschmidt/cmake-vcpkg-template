@@ -12,7 +12,7 @@ git clone --recursive https://github.com/h-waldschmidt/cmake-vcpkg-template.git
 ```
 To update the `vcpkg` submodule do:
 ```
-git submodule update
+git submodule update --remote --merge
 ```
 ## Building
 
