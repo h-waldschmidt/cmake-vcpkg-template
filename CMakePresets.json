@@ -8,6 +8,7 @@
     "configurePresets": [
         {
             "name": "Base",
+            "hidden": true,
             "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
             "binaryDir": "${sourceDir}/build",
             "generator": "Ninja"
@@ -32,6 +33,20 @@
             "inherits": "Base",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "DebugTest",
+            "inherits": "Debug",
+            "cacheVariables": {
+                "BUILD_TESTING": "ON"
+            }
+        },
+        {
+            "name": "ReleaseTest",
+            "inherits": "Release",
+            "cacheVariables": {
+                "BUILD_TESTING": "ON"
             }
         }
     ],
