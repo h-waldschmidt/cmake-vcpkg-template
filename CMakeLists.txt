@@ -6,8 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # on MacOS and Linux the default is static binding, but to prevent problems with LGPL, we use dynamic binding
 if(APPLE)
     set(VCPKG_TARGET_TRIPLET arm64-osx-dynamic)
-elseif(UNIX)
+elseif(UNIX AND VCPKG_TARGET_ARCHITECTURE==x64)
     set(VCPKG_TARGET_TRIPLET x64-linux-dynamic)
+elseif(UNIX AND VCPKG_TARGET_ARCHITECTURE==arm64)
+    set(VCPKG_TARGET_TRIPLET arm64-linux-dynamic)
 endif()
 
 project(test-project LANGUAGES C CXX)
