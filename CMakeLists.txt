@@ -4,11 +4,14 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # on MacOS and Linux the default is static binding, but to prevent problems with LGPL, we use dynamic binding
+EXECUTE_PROCESS(COMMAND uname -m COMMAND tr -d '\n' OUTPUT_VARIABLE ARCHITECTURE)
+message(STATUS "Architecture: ${ARCHITECTURE}")
+
 if(APPLE)
     set(VCPKG_TARGET_TRIPLET arm64-osx-dynamic)
-elseif(UNIX AND VCPKG_TARGET_ARCHITECTURE==x64)
+elseif(UNIX AND ARCHITECTURE STREQUAL "x86_64")
     set(VCPKG_TARGET_TRIPLET x64-linux-dynamic)
-elseif(UNIX AND VCPKG_TARGET_ARCHITECTURE==arm64)
+elseif(UNIX AND STREQUAL "aarch64")
     set(VCPKG_TARGET_TRIPLET arm64-linux-dynamic)
 endif()
 
