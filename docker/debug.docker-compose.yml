@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+    test:
+        build:
+            context: ./../
+            dockerfile: docker/debug.Dockerfile
+        container_name: test_debug
+        ports:
+            - 8000:8000
+        volumes:
+            - ./../:/app
