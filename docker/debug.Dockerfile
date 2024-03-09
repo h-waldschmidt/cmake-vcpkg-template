@@ -15,6 +15,6 @@ RUN ARCH=$(uname -m) && \
 VOLUME [ "/app" ]
 WORKDIR /app
 
-ENTRYPOINT cmake --version && cmake --preset Debug && \
+ENTRYPOINT cmake --preset Debug && \
     cmake --build --preset Debug && \
     gdbserver :8000 /app/build/src/test-project
