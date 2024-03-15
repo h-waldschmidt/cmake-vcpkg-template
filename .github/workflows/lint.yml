@@ -35,11 +35,15 @@ on:
 
 jobs:
     cpp-linter:
+        permissions:
+            issues: write
+            pull-requests: write
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
 
-            # ... optionally setup build env to create a compilation database
+            - name: Set up Compilation Database
+              run: cmake --preset Debug
 
             - uses: cpp-linter/cpp-linter-action@v2
               id: linter
@@ -48,7 +52,7 @@ jobs:
               with:
                   style: "file" # Use .clang-format config file.
                   tidy-checks: "" # Use .clang-tidy config file.
-
-            - name: Fail fast?!
-              if: steps.linter.outputs.checks-failed > 0
-              run: exit 1
+                  tidy-review: true
+                  format-review: true
+                  database: "./build/compile_commands.json"
+                  thread-comments: ${{ github.event_name == 'pull_request' && 'update' }}
