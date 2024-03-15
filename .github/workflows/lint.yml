@@ -48,7 +48,7 @@ jobs:
               run: sudo apt-get install ninja-build -y
 
             - name: Set up Compilation Database
-              run: ninja --version && cmake --preset Debug
+              run: cmake --preset Debug
 
             - uses: cpp-linter/cpp-linter-action@v2
               id: linter
