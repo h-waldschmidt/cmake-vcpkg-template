@@ -44,6 +44,8 @@ jobs:
               uses: actions/checkout@v4
               with:
                   submodules: true
+            - name: Install ninja
+              run: sudo apt-get install ninja-build -y
 
             - name: Set up Compilation Database
               run: ninja --version && cmake --preset Debug
