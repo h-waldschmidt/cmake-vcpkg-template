@@ -61,5 +61,4 @@ jobs:
                   tidy-review: true
                   format-review: true
                   database: "./build/compile_commands.json"
-                  files-changed-only: false
                   thread-comments: true
