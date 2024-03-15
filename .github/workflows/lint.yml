@@ -46,7 +46,7 @@ jobs:
                   submodules: true
 
             - name: Set up Compilation Database
-              run: cmake --preset Debug
+              run: ninja --version && cmake --preset Debug
 
             - uses: cpp-linter/cpp-linter-action@v2
               id: linter
