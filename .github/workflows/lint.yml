@@ -38,6 +38,7 @@ jobs:
         permissions:
             issues: write
             pull-requests: write
+            contents: read
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -60,4 +61,5 @@ jobs:
                   tidy-review: true
                   format-review: true
                   database: "./build/compile_commands.json"
-                  thread-comments: ${{ github.event_name == 'pull_request' && 'update' }}
+                  files-changed-only: false
+                  thread-comments: true
