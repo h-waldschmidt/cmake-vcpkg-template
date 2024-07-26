@@ -6,4 +6,4 @@ class SubLibComponent {
     static void print(int a);
     int add(int a, int b);
 };
-}  // namespace name::
+}  // namespace name::sublibrary
