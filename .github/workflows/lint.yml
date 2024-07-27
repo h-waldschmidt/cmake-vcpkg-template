@@ -63,6 +63,7 @@ jobs:
           format-review: true
           database: "./build/compile_commands.json"
           thread-comments: true
+          ignore: "build"
 
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
