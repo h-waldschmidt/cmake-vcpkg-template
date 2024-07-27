@@ -14,7 +14,8 @@ void SubLibComponent::print(int a) {
 }
 
 int SubLibComponent::add(int a, int b) {
-    if (a > 10) {
+    const int magic_number = 10;
+    if (a > magic_number) {
         fmt::print("a is greater than 10\n");
     } else {
         fmt::print("a is less than or equal to 10\n");
