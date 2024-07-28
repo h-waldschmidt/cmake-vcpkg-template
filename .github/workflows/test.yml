@@ -42,7 +42,7 @@ jobs:
         with:
           submodules: true
       - name: Install ninja
-        run: sudo apt-get install ninja-build -y
+        run: sudo apt-get install ninja-build gcovr -y
       - name: CMake Generate
         run: cmake --preset DebugTest
       - name: Build, Run Test and Generate Report
