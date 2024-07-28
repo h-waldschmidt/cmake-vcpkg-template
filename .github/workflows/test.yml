@@ -47,21 +47,6 @@ jobs:
         run: cmake --preset DebugTest
       - name: Build, Run Test and Generate Report
         run: cmake --build --preset DebugTest --target coverage
-      - name: Archive coverage results
-        uses: actions/upload-artifact@v4
-        with:
-          name: code-coverage-report
-          path: build/coverage/*.html
-          retention-days: 7
-      - name: Generate Coverage comment
-        run: |
-          LINES=$(awk '/<table class="coverage">/,/<\/table>/' build/coverage/index.html | awk '/<th scope="row">Lines:/,/<\/tr>/' | sed -n 's/.*>\(.*%\).*/\1/p' | sed 's/%//')
-          FUNCTIONS=$(awk '/<table class="coverage">/,/<\/table>/' build/coerage/index.html | awk '/<th scope="row">Functions:/,/<\/tr>/' | sed -n 's/.*>\(.*%\).*/\1/p' | sed 's/%//')
-          BRANCHES=$(awk '/<table class="coverage">/,/<\/table>/' build/coverage/index.html | awk '/<th scope="row">Branches:/,/<\/tr>/' | sed -n 's/.*>\(.*%\).*/\1/p' | sed 's/%//')
-          echo "## Coverage Stats" >> output.md
-          echo "- Lines: ${LINES}%" >> output.md
-          echo "- Functions ${FUNCTIONS}%" >> output.md
-          echo "- Branches ${BRANCHES}%" >> output.md
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
