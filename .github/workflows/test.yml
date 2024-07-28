@@ -52,5 +52,4 @@ jobs:
         with:
           verbose: true
           files: ./build/coverage.xml
-        env:
           token: ${{ secrets.CODECOV_TOKEN }}
