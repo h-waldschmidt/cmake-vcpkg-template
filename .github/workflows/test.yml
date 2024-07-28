@@ -48,6 +48,9 @@ jobs:
       - name: Build, Run Test and Generate Report
         run: cmake --build --preset DebugTest --target coverage
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
+        uses: codecov/codecov-action@v4
         with:
+          verbose: true
+          files: ./build/coverage.xml
+        env:
           token: ${{ secrets.CODECOV_TOKEN }}
