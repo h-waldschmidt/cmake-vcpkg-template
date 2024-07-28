@@ -14,4 +14,8 @@ if(BUILD_TESTING)
     target_link_libraries(${PROJECT_NAME}_test PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
 
     gtest_discover_tests(${PROJECT_NAME}_test)
+
+    append_coverage_compiler_flags()
+    # exclude third party libraries in coverage report and test files
+    setup_target_for_coverage_gcovr_xml(NAME coverage EXECUTABLE ctest -j 4 DEPENDENCIES ${PROJECT_NAME}_test EXCLUDE "build/*" ".*_test.cpp" ".*main.cpp")
 endif()
