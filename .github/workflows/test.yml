@@ -1,6 +1,9 @@
 name: test_and_coverage
 on:
   pull_request:
+    secrets:
+      codecov_token:
+        required: true
     branches: [main, master, develop]
     paths:
       [
@@ -17,6 +20,9 @@ on:
         "**.cmake",
       ]
   push:
+    secrets:
+      codecov_token:
+        required: true
     branches: [main, master, develop]
     paths:
       [
