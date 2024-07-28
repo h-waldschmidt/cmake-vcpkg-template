@@ -62,13 +62,7 @@ jobs:
           echo "- Lines: ${LINES}%" >> output.md
           echo "- Functions ${FUNCTIONS}%" >> output.md
           echo "- Branches ${BRANCHES}%" >> output.md
-      - name: Comment on PR with test coverage
-        uses: actions/github-script@v6
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
         with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '${cat output.md}'
-            })
+          token: ${{ secrets.CODECOV_TOKEN }}
