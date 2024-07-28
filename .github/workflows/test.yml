@@ -55,16 +55,20 @@ jobs:
           retention-days: 7
       - name: Generate Coverage comment
         run: |
-          LINES=$(awk '/<table class="coverage">/,/<\/table>/' index.html | awk '/<th scope="row">Lines:/,/<\/tr>/' | sed -n 's/.*>\(.*%\).*/\1/p' | sed 's/%//')
-          FUNCTIONS=$(awk '/<table class="coverage">/,/<\/table>/' index.html | awk '/<th scope="row">Functions:/,/<\/tr>/' | sed -n 's/.*>\(.*%\).*/\1/p' | sed 's/%//')
-          BRANCHES=$(awk '/<table class="coverage">/,/<\/table>/' index.html | awk '/<th scope="row">Branches:/,/<\/tr>/' | sed -n 's/.*>\(.*%\).*/\1/p' | sed 's/%//')
+          LINES=$(awk '/<table class="coverage">/,/<\/table>/' build/coverage/index.html | awk '/<th scope="row">Lines:/,/<\/tr>/' | sed -n 's/.*>\(.*%\).*/\1/p' | sed 's/%//')
+          FUNCTIONS=$(awk '/<table class="coverage">/,/<\/table>/' build/coerage/index.html | awk '/<th scope="row">Functions:/,/<\/tr>/' | sed -n 's/.*>\(.*%\).*/\1/p' | sed 's/%//')
+          BRANCHES=$(awk '/<table class="coverage">/,/<\/table>/' build/coverage/index.html | awk '/<th scope="row">Branches:/,/<\/tr>/' | sed -n 's/.*>\(.*%\).*/\1/p' | sed 's/%//')
           echo "## Coverage Stats" >> output.md
           echo "- Lines: ${LINES}%" >> output.md
           echo "- Functions ${FUNCTIONS}%" >> output.md
           echo "- Branches ${BRANCHES}%" >> output.md
-      - name: Comment PR with test coverage
-        uses: machine-learning-apps/pr-comment@1.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Comment on PR with test coverage
+        uses: actions/github-script@v6
         with:
-          path: output.md
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '${cat output.md}'
+            })
