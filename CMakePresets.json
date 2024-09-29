@@ -11,11 +11,7 @@
             "hidden": true,
             "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
             "binaryDir": "${sourceDir}/build",
-            "generator": "Ninja",
-            "cacheVariables": {
-                "CMAKE_C_COMPILER": "clang",
-                "CMAKE_CXX_COMPILER": "clang++"
-            }
+            "generator": "Ninja"
         },
         {
             "name": "Debug",
