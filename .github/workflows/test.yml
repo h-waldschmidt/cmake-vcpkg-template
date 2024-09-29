@@ -44,7 +44,7 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install ninja-build gcovr -y
       - name: GCC and gcovr version
-        run: gcc --version && g++ --version && gcovr --version
+        run: gcc --version && g++ --version && gcovr --version && cmake --version
       - name: CMake Generate
         run: cmake --preset DebugTest
       - name: Build, Run Test and Generate Report
