@@ -48,7 +48,7 @@ jobs:
       - name: CMake Generate
         run: cmake --preset DebugTest
       - name: Build, Run Test and Generate Report
-        run: cmake --build --preset DebugTest
+        run: cmake --build --preset DebugTest --target coverage
       - name: Run Tests
         run: ./build/src/test-project_test
       - name: Generate Report
