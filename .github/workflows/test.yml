@@ -42,7 +42,11 @@ jobs:
         with:
           submodules: true
       - name: Install dependencies
-        run: sudo apt-get install ninja-build gcovr -y
+        run: sudo apt-get install ninja-build -y && pip install gcovr
+      - name: Install gcc 14
+        run: sudo add-apt-repository ppa:ubuntu-toolchain-r/test && sudo apt update && sudo apt install gcc-14 g++-14
+      - name: Set gcc14 as default
+        run: sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 100 && sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 100 && sudo update-alternatives --config gcc && sudo update-alternatives --config g++
       - name: GCC and gcovr version
         run: gcc --version && g++ --version && gcovr --version && cmake --version
       - name: CMake Generate
