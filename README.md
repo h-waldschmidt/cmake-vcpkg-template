@@ -1,4 +1,6 @@
 # cmake-vcpkg-template
+[![cpp-linter](https://github.com/h-waldschmidt/cmake-vcpkg-template/actions/workflows/lint.yml/badge.svg)](https://github.com/h-waldschmidt/cmake-vcpkg-template/actions/workflows/lint.yml)
+[![codecov](https://codecov.io/gh/h-waldschmidt/cmake-vcpkg-template/graph/badge.svg?token=ECSMrHzpIn)](https://codecov.io/gh/h-waldschmidt/cmake-vcpkg-template)
 
 Template for integrating vcpkg into a CMake project
 Also includes multiple presets for building and activates compiler warnings.
