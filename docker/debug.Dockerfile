@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 
 RUN apt-get update; \
-    apt-get install -y git zip curl unzip tar build-essential pkg-config clang ninja-build gdbserver; \
+    apt-get install -y git zip curl unzip tar build-essential pkg-config ninja-build gdbserver; \
     apt-get clean;
 
 # install newest cmake version
@@ -15,6 +15,8 @@ RUN ARCH=$(uname -m) && \
 VOLUME [ "/app" ]
 WORKDIR /app
 
+# TODO: Add remote debugging capabilites, but for now just run debug build
 ENTRYPOINT cmake --preset Debug && \
     cmake --build --preset Debug && \
-    gdbserver :8000 /app/build/src/test-project
+    ./build/src/test-project
+# gdbserver :8000 /app/build/src/test-project

@@ -1,7 +1,7 @@
 FROM debian:buster-slim AS build
 
 RUN apt-get update; \
-    apt-get install -y git zip curl unzip tar build-essential pkg-config clang ninja-build; \
+    apt-get install -y git zip curl unzip tar build-essential pkg-config ninja-build; \
     apt-get clean;
 
 # install newest cmake version
