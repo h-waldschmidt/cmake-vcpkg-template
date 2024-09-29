@@ -41,8 +41,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: true
-      - name: Install ninja
-        run: sudo apt-get install ninja-build gcovr -y
+      - name: Install dependencies
+        run: sudo apt-get install ninja-build -y && pip install gcovr
       - name: CMake Generate
         run: cmake --preset DebugTest
       - name: Build, Run Test and Generate Report
@@ -50,7 +50,7 @@ jobs:
       - name: Run Tests
         run: ./build/src/test-project_test
       - name: Generate Report
-        run: gcovr --xml -e build/vcpkg_installed -e '.*main.cpp' -e '.*_test.cpp' > ./build/coverage.xml
+        run: gcovr --cobertura -e build/vcpkg_installed -e '.*main.cpp' -e '.*_test.cpp' > ./build/coverage.xml
       - name: Print coverage report
         run: cat ./build/coverage.xml
       - name: Print gcno files
