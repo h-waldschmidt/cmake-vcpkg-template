@@ -17,5 +17,6 @@ if(BUILD_TESTING)
 
     append_coverage_compiler_flags()
     # exclude third party libraries in coverage report and test files
-    setup_target_for_coverage_gcovr_xml(NAME coverage EXECUTABLE ctest -j 4 DEPENDENCIES ${PROJECT_NAME}_test EXCLUDE "build/vcpkg_installed/*" ".*_test.cpp" ".*main.cpp" GCOVR_EXTRA_ARGS --verbose)
+    set(GCOVR_ADDITIONAL_ARGS "--verbose")
+    setup_target_for_coverage_gcovr_xml(NAME coverage EXECUTABLE ctest -j 4 DEPENDENCIES ${PROJECT_NAME}_test EXCLUDE "build/vcpkg_installed/*" ".*_test.cpp" ".*main.cpp")
 endif()
