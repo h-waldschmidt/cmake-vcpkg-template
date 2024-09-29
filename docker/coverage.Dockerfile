@@ -17,5 +17,5 @@ WORKDIR /app
 
 ENTRYPOINT cmake --preset DebugTest && \
     cmake --build --preset DebugTest && \
-    gcovr --xml ./build/coverage.xml --verbose -e build/vcpkg_installed -e '.*main.cpp' -e '.*_test.cpp'
+    gcovr --xml /app/build/coverage.xml --verbose -e /app/build/vcpkg_installed -e '.*main.cpp' -e '.*_test.cpp'
 
