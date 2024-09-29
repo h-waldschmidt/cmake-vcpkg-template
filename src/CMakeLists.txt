@@ -8,7 +8,6 @@ add_subdirectory(sublibrary)
 
 # if test is enabled, add test target
 if(BUILD_TESTING)
-    append_coverage_compiler_flags()
     add_executable(${PROJECT_NAME}_test main_test.cpp)
 
     target_link_libraries(${PROJECT_NAME}_test PRIVATE sublibrary_test)
