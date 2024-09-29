@@ -16,4 +16,6 @@ VOLUME [ "/app" ]
 WORKDIR /app
 
 ENTRYPOINT cmake --preset DebugTest && \
-    cmake --build --preset DebugTest --target coverage
+    cmake --build --preset DebugTest && \
+    gcovr --xml ./build/coverage.xml --verbose -e build/vcpkg_installed -e '.*main.cpp' -e '.*_test.cpp'
+
