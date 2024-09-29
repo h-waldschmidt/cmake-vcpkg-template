@@ -50,7 +50,7 @@ jobs:
       - name: Run Tests
         run: ./build/src/test-project_test
       - name: Generate Report
-        run: gcovr --cobertura -e build/vcpkg_installed -e '.*main.cpp' -e '.*_test.cpp' > ./build/coverage.xml
+        run: gcovr --xml -e build/vcpkg_installed -e '.*main.cpp' -e '.*_test.cpp' > ./build/coverage.xml
       - name: Print coverage report
         run: cat ./build/coverage.xml
       - name: Print gcno files
