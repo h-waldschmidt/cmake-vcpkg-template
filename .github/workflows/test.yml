@@ -49,6 +49,8 @@ jobs:
         run: cmake --build --preset DebugTest --target coverage
       - name: Print coverage report
         run: cat ./build/coverage.xml
+      - name: Print gcno files
+        run: ls ./build/src/sublibrary/CMakeFiles/sublibrary.dir
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4
         with:
